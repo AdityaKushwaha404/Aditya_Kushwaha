@@ -1,10 +1,79 @@
 import { FaLocationArrow } from "react-icons/fa6";
+import React, { useEffect } from "react";
 
 import MagicButton from "./MagicButton";
 import { Spotlight } from "./ui/Spotlight";
 import { TextGenerateEffect } from "./ui/TextGenerateEffect";
+import gsap from "gsap";
 
 const Hero = () => {
+  useEffect(() => {
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const coarsePointer = window.matchMedia("(pointer: coarse)").matches;
+    if (prefersReduced) return;
+
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({ defaults: { duration: 0.7, ease: "power3.out" } });
+
+      // spotlights enter first with a soft stagger
+      tl.from(
+        ".hero-spot",
+        { opacity: 0, y: 30, scale: 0.98, stagger: 0.08, duration: 0.9, ease: "expo.out" },
+        0
+      );
+
+      // tag, title, subtitle, CTA
+      tl.from(
+        ".hero-tag",
+        { opacity: 0, y: 12, duration: 0.6, ease: "power2.out" },
+        0.12
+      )
+        .from(
+          ".hero-title",
+          { opacity: 0, y: 18, duration: 0.9, stagger: 0.02, ease: "power3.out" },
+          0.18
+        )
+        .from(
+          ".hero-sub",
+          { opacity: 0, y: 12, duration: 0.6, ease: "power2.out" },
+          0.44
+        )
+        .from(
+          ".hero-cta",
+          { opacity: 0, scale: 0.96, y: 8, duration: 0.5, ease: "back.out(1.2)" },
+          0.6
+        );
+
+      // gentle floating loop on spotlights (disabled on coarse pointers)
+      if (!coarsePointer) {
+        gsap.to(".hero-spot", { y: "+=6", duration: 5, yoyo: true, repeat: -1, ease: "sine.inOut" });
+
+        // small parallax following mouse for spotlights
+        const onMove = (e: MouseEvent) => {
+          const w = window.innerWidth;
+          const h = window.innerHeight;
+          const nx = (e.clientX / w - 0.5) * 2; // -1..1
+          const ny = (e.clientY / h - 0.5) * 2;
+          gsap.to(".hero-spot", { x: nx * 12, y: `+=${ny * 6}`, duration: 0.6, overwrite: true, ease: "power2.out" });
+        };
+        window.addEventListener("mousemove", onMove);
+
+        // cleanup mousemove listener on teardown
+        return () => {
+          window.removeEventListener("mousemove", onMove);
+          tl.kill();
+          gsap.killTweensOf(".hero-spot");
+        };
+      }
+      // cleanup timeline if coarse pointer or reduced
+      return () => {
+        tl.kill();
+      };
+    }, null);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
     <div id="home" className="pb-20 pt-24">
       {/**
@@ -13,14 +82,14 @@ const Hero = () => {
        */}
       <div>
         <Spotlight
-          className="-top-40 -left-10 md:-left-32 md:-top-20 h-screen"
+          className="hero-spot -top-40 -left-10 md:-left-32 md:-top-20 h-screen"
           fill="white"
         />
         <Spotlight
-          className="h-[80vh] w-[50vw] top-10 left-full"
+          className="hero-spot h-[80vh] w-[50vw] top-10 left-full"
           fill="purple"
         />
-        <Spotlight className="left-80 top-28 h-[80vh] w-[50vw]" fill="blue" />
+        <Spotlight className="hero-spot left-80 top-28 h-[80vh] w-[50vw]" fill="blue" />
       </div>
 
       {/**
@@ -42,7 +111,7 @@ const Hero = () => {
 
       <div className="flex justify-center relative my-36 z-10">
         <div className="max-w-[89vw] md:max-w-4xl lg:max-w-[70vw] flex flex-col items-center justify-center">
-          <p className="uppercase tracking-widest text-xs text-center text-blue-100 max-w-80">
+          <p className="hero-tag uppercase tracking-widest text-xs text-center text-blue-100 max-w-80">
             ADITYA KUSHWAHA — FULL-STACK / SOFTWARE ENGINEER
           </p>
 
@@ -53,14 +122,14 @@ const Hero = () => {
            */}
           <TextGenerateEffect
             words="Aspiring Full-Stack Engineer crafting backends and elegant frontends"
-            className="text-center text-[40px] md:text-5xl lg:text-6xl"
+            className="hero-title text-center text-[40px] md:text-5xl lg:text-6xl"
           />
 
-          <p className="text-center md:tracking-wider mb-4 text-sm md:text-base lg:text-lg">
+          <p className="hero-sub text-center md:tracking-wider mb-4 text-sm md:text-base lg:text-lg">
             I&apos;m Aditya — blending interfaces and systems to create seamless digital journeys.
           </p>
 
-          <div className="flex gap-3">
+          <div className="flex gap-3 hero-cta">
             <a href="/cv" target="_blank" rel="noopener noreferrer">
               <MagicButton
                 title="View my resume"
