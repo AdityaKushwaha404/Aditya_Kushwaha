@@ -1,0 +1,5 @@
+<svg width="180" height="48" viewBox="0 0 180 48" xmlns="http://www.w3.org/2000/svg" fill="none">
+  <rect x="1" y="1" width="178" height="46" rx="12" fill="none" stroke="none"/>
+  <path d="M22 16l14-6 14 6v16l-14 6-14-6V16z" stroke="#3C873A" stroke-width="3" fill="none"/>
+  <text x="52" y="30" font-family="Inter, system-ui, -apple-system, Segoe UI" font-size="18" fill="#E6E8F2">Node.js</text>
+</svg>

@@ -1,0 +1,6 @@
+<svg width="180" height="48" viewBox="0 0 180 48" xmlns="http://www.w3.org/2000/svg" fill="none">
+  <rect x="1" y="1" width="178" height="46" rx="12" fill="none" stroke="none"/>
+  <circle cx="28" cy="24" r="10" stroke="#009688" stroke-width="3" fill="none"/>
+  <path d="M28 18v12M22 24h12" stroke="#009688" stroke-width="3"/>
+  <text x="52" y="30" font-family="Inter, system-ui, -apple-system, Segoe UI" font-size="18" fill="#E6E8F2">FastAPI</text>
+</svg>

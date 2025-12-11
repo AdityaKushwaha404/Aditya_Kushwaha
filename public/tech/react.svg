@@ -1,0 +1,14 @@
+<svg width="180" height="48" viewBox="0 0 180 48" xmlns="http://www.w3.org/2000/svg" fill="none">
+  <rect x="1" y="1" width="178" height="46" rx="12" fill="none" stroke="none"/>
+  <g filter="url(#glow)">
+    <circle cx="28" cy="24" r="9" stroke="#61DAFB" stroke-width="3" fill="none"/>
+    <ellipse cx="28" cy="24" rx="16" ry="6.5" stroke="#61DAFB" stroke-width="3"/>
+    <ellipse cx="28" cy="24" rx="6.5" ry="16" stroke="#61DAFB" stroke-width="3"/>
+  </g>
+  <text x="52" y="30" font-family="Inter, system-ui, -apple-system, Segoe UI" font-size="18" fill="#E6E8F2">React</text>
+  <defs>
+    <filter id="glow" x="0" y="0" width="60" height="60" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="0.6" result="blur"/>
+    </filter>
+  </defs>
+</svg>
