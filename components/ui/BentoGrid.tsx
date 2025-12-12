@@ -255,7 +255,7 @@ export const BentoGridItem = ({
               {/* Creative headline replacing helper text */}
               <div className="mb-5">
                 <p className="text-transparent bg-clip-text bg-gradient-to-r from-white via-white/90 to-white/70 text-xl lg:text-3xl font-semibold tracking-wide">
-                  Copy & Connect — let’s build something brilliant.
+                  Copy & Connect let’s build something brilliant.
                 </p>
               </div>
 

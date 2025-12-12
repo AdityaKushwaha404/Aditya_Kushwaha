@@ -13,7 +13,7 @@ export default function Custom500() {
             flexDirection: "column",
           }}
         >
-          <h1>500 — Server error</h1>
+          <h1>500 - Server error</h1>
           <p>Something went wrong on the server.</p>
         </div>
       </body>

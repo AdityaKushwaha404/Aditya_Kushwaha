@@ -158,7 +158,7 @@ export const Navbar: React.FC<{ className?: string }> = ({ className }) => {
             }}
             transition={{ duration: 0.35, ease: "easeOut" }}
             className={cn(
-              "relative flex items-center gap-5 rounded-3xl px-5",
+              "relative flex items-center gap-4 rounded-3xl px-5",
               // stronger glass
               "backdrop-blur-3xl backdrop-saturate-200",
               // layered translucent background with subtle gradient

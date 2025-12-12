@@ -178,14 +178,14 @@ export const companies = [
 export const workExperience = [
   {
     id: 1,
-    title: "HackWithUttarPradesh — Winner",
+    title: "HackWithUttarPradesh - Winner",
     desc: "Secured 1st Place at Chandigarh University Uttar Pradesh; awarded ₹50,000 for innovation, teamwork, and technical excellence.",
     className: "md:col-span-2",
     thumbnail: "/exp1.svg",
   },
   {
     id: 2,
-    title: "SIH Internal Hackathon — Winner",
+    title: "SIH Internal Hackathon - Winner",
     desc: "Achieved 1st Prize for building a blockchain-based agricultural transparency system, enhancing traceability and fairness in the agri-supply chain.",
     className: "md:col-span-2",
     thumbnail: "/exp2.svg",

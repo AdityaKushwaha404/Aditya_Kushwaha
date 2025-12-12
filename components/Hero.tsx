@@ -150,7 +150,7 @@ const Hero = () => {
       <div className="flex justify-center relative my-36 z-10">
         <div className="max-w-[89vw] md:max-w-4xl lg:max-w-[70vw] flex flex-col items-center justify-center">
           <p className="hero-tag uppercase tracking-widest text-xs text-center text-blue-100 max-w-80">
-            ADITYA KUSHWAHA — FULL-STACK / SOFTWARE ENGINEER
+            ADITYA KUSHWAHA FULL-STACK / SOFTWARE ENGINEER
           </p>
 
           {/**
@@ -164,7 +164,7 @@ const Hero = () => {
           />
 
           <p className="hero-sub text-center md:tracking-wider mb-4 text-sm md:text-base lg:text-lg">
-            I&apos;m Aditya — blending interfaces and systems to create seamless
+            I&apos;m Aditya - blending interfaces and systems to create seamless
             digital journeys.
           </p>
 

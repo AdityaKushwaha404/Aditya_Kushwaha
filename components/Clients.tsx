@@ -57,7 +57,7 @@ const bullets = [
   },
   {
     title: "Frontend polish + backend depth",
-    desc: "Aesthetics meet systems thinking — cohesive UX with robust foundations.",
+    desc: "Aesthetics meet systems thinking - cohesive UX with robust foundations.",
     accent: "from-pink-400/80 via-pink-400/40 to-pink-400/0",
     icon: (
       <svg
@@ -79,7 +79,7 @@ const bullets = [
   },
   {
     title: "Ownership, speed, iteration",
-    desc: "Deliver fast, measure, iterate — accountable workflows and continuous improvement.",
+    desc: "Deliver fast, measure, iterate - accountable workflows and continuous improvement.",
     accent: "from-emerald-400/80 via-emerald-400/40 to-emerald-400/0",
     icon: (
       <svg
