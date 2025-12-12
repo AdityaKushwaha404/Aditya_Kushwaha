@@ -73,6 +73,7 @@ function useScrollDirection() {
 /** NAVBAR **/
 export const Navbar: React.FC<{ className?: string }> = ({ className }) => {
   const [open, setOpen] = React.useState(false);
+  const navRef = React.useRef<HTMLElement | null>(null);
   const scrolled = useScrollBlur();
   const active = useActiveSection(
     navItems.map((n) => n.href) // ["#home"...]
@@ -106,8 +107,20 @@ export const Navbar: React.FC<{ className?: string }> = ({ className }) => {
       const el = document.getElementById(id);
       if (el) {
         el.focus({ preventScroll: true }); // improves a11y
-        // prefer native smooth scoll handled globally
-        el.scrollIntoView({ behavior: "smooth", block: "start" });
+        // offset scroll to account for fixed navbar height
+        const navHeight = navRef.current?.offsetHeight ?? 0;
+        const prefersReduced = window.matchMedia(
+          "(prefers-reduced-motion: reduce)"
+        ).matches;
+
+        const targetY =
+          el.getBoundingClientRect().top + window.scrollY - navHeight - 8; // small gap
+
+        if (prefersReduced) {
+          window.scrollTo({ top: targetY, behavior: "auto" });
+        } else {
+          window.scrollTo({ top: targetY, behavior: "smooth" });
+        }
       } else {
         // fallback to window location
         window.location.hash = href;
@@ -129,6 +142,7 @@ export const Navbar: React.FC<{ className?: string }> = ({ className }) => {
       </a>
 
       <nav
+        ref={navRef}
         className={cn(
           "fixed inset-x-0 top-0 z-[100] transition-all",
           className
