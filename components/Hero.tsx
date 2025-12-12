@@ -104,7 +104,7 @@ const Hero = () => {
       return () => {
         tl.kill();
       };
-    }, null);
+    });
 
     return () => ctx.revert();
   }, []);
