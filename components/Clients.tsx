@@ -11,8 +11,20 @@ const bullets = [
     desc: "APIs and services built with caching, queues, observability, and horizontal scaling.",
     accent: "from-purple-400/80 via-purple-400/40 to-purple-400/0",
     icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-purple-300">
-        <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <svg
+        width="22"
+        height="22"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="text-purple-300"
+      >
+        <path
+          d="M4 7h16M4 12h16M4 17h16"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+        />
       </svg>
     ),
   },
@@ -21,9 +33,25 @@ const bullets = [
     desc: "Modular boundaries, predictable layers, CI-ready tests, and clear code ownership.",
     accent: "from-blue-400/80 via-blue-400/40 to-blue-400/0",
     icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-blue-300">
-        <path d="M12 3l7 4v10l-7 4-7-4V7l7-4z" stroke="currentColor" strokeWidth="1.5" />
-        <path d="M9 12l3 3 4-5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <svg
+        width="22"
+        height="22"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="text-blue-300"
+      >
+        <path
+          d="M12 3l7 4v10l-7 4-7-4V7l7-4z"
+          stroke="currentColor"
+          strokeWidth="1.5"
+        />
+        <path
+          d="M9 12l3 3 4-5"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+        />
       </svg>
     ),
   },
@@ -32,8 +60,19 @@ const bullets = [
     desc: "Aesthetics meet systems thinking — cohesive UX with robust foundations.",
     accent: "from-pink-400/80 via-pink-400/40 to-pink-400/0",
     icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-pink-300">
-        <path d="M4 6h10v4H4zM14 6l6 4-6 4V6z" stroke="currentColor" strokeWidth="1.5" />
+      <svg
+        width="22"
+        height="22"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="text-pink-300"
+      >
+        <path
+          d="M4 6h10v4H4zM14 6l6 4-6 4V6z"
+          stroke="currentColor"
+          strokeWidth="1.5"
+        />
         <path d="M4 14h8v4H4z" stroke="currentColor" strokeWidth="1.5" />
       </svg>
     ),
@@ -43,9 +82,26 @@ const bullets = [
     desc: "Deliver fast, measure, iterate — accountable workflows and continuous improvement.",
     accent: "from-emerald-400/80 via-emerald-400/40 to-emerald-400/0",
     icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-emerald-300">
-        <path d="M4 12h9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-        <path d="M11 8l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <svg
+        width="22"
+        height="22"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="text-emerald-300"
+      >
+        <path
+          d="M4 12h9"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+        />
+        <path
+          d="M11 8l4 4-4 4"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+        />
         <circle cx="6" cy="12" r="2" stroke="currentColor" strokeWidth="1.5" />
       </svg>
     ),
@@ -69,7 +125,9 @@ const glowVariants = {
 
 const Clients = () => {
   useEffect(() => {
-    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const prefersReduced = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
     const coarsePointer = window.matchMedia("(pointer: coarse)").matches;
     if (prefersReduced) return;
 
@@ -135,9 +193,17 @@ const Clients = () => {
     cards.forEach((card) => {
       const accent = card.querySelector(".accent-bar");
       const tlHover = gsap.timeline({ paused: true });
-      tlHover.to(card, { y: -6, scale: 1.02, duration: 0.18, ease: "power2.out" }, 0);
+      tlHover.to(
+        card,
+        { y: -6, scale: 1.02, duration: 0.18, ease: "power2.out" },
+        0
+      );
       if (accent) {
-        tlHover.to(accent, { height: "100%", duration: 0.22, ease: "power2.out" }, 0);
+        tlHover.to(
+          accent,
+          { height: "100%", duration: 0.22, ease: "power2.out" },
+          0
+        );
       }
       card.addEventListener("mouseenter", () => tlHover.play());
       card.addEventListener("mouseleave", () => tlHover.reverse());
@@ -181,11 +247,24 @@ const Clients = () => {
       const grid = document.querySelector(".bg-grid") as HTMLElement | null;
       const spot = document.querySelector(".spotlight") as HTMLElement | null;
       const onMove = (e: MouseEvent) => {
-        const w = window.innerWidth, h = window.innerHeight;
+        const w = window.innerWidth,
+          h = window.innerHeight;
         const nx = (e.clientX / w - 0.5) * 2;
         const ny = (e.clientY / h - 0.5) * 2;
-        if (grid) gsap.to(grid, { x: nx * 10, y: ny * 10, duration: 0.4, ease: "power2.out" });
-        if (spot) gsap.to(spot, { x: e.clientX - w * 0.5, y: e.clientY - h * 0.5, duration: 0.25, ease: "power2.out" });
+        if (grid)
+          gsap.to(grid, {
+            x: nx * 10,
+            y: ny * 10,
+            duration: 0.4,
+            ease: "power2.out",
+          });
+        if (spot)
+          gsap.to(spot, {
+            x: e.clientX - w * 0.5,
+            y: e.clientY - h * 0.5,
+            duration: 0.25,
+            ease: "power2.out",
+          });
       };
       window.addEventListener("mousemove", onMove);
       cleanupParallax = () => window.removeEventListener("mousemove", onMove);
@@ -207,10 +286,14 @@ const Clients = () => {
         {/* Glass panel with subtle grid and glow */}
         <div className="cards-window relative rounded-3xl p-6 md:p-10 bg-[rgb(14_18_49/0.22)] border border-white/15 ring-1 ring-white/20 backdrop-blur-2xl shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_16px_48px_rgba(2,6,23,0.6)]">
           {/* faint grid pattern */}
-          <div className="bg-grid pointer-events-none absolute inset-0 rounded-3xl opacity-[0.06]" style={{
-            backgroundImage: "radial-gradient(circle at 1px 1px, rgba(255,255,255,0.9) 1px, transparent 1px)",
-            backgroundSize: "24px 24px",
-          }} />
+          <div
+            className="bg-grid pointer-events-none absolute inset-0 rounded-3xl opacity-[0.06]"
+            style={{
+              backgroundImage:
+                "radial-gradient(circle at 1px 1px, rgba(255,255,255,0.9) 1px, transparent 1px)",
+              backgroundSize: "24px 24px",
+            }}
+          />
           {/* spotlight */}
           <div className="spotlight pointer-events-none absolute left-1/2 top-1/2 h-40 w-40 -translate-x-1/2 -translate-y-1/2 rounded-full bg-purple-400/10 blur-2xl" />
           {/* top sweep */}
@@ -241,17 +324,19 @@ const Clients = () => {
                 className="why-card relative rounded-2xl p-4 md:p-6 bg-white/6 border border-white/12 ring-1 ring-white/15 backdrop-blur-xl hover:bg-white/8 hover:shadow-[0_8px_28px_rgba(2,6,23,0.45)] hover:-translate-y-0.5 transition-all"
               >
                 {/* accent bar varies per card */}
-                <div className={`accent-bar absolute left-0 top-0 h-2 md:h-3 w-[3px] rounded-l-2xl bg-gradient-to-b ${b.accent} z-20`} />
+                <div
+                  className={`accent-bar absolute left-0 top-0 h-2 md:h-3 w-[3px] rounded-l-2xl bg-gradient-to-b ${b.accent} z-20`}
+                />
                 <div className="pl-3 md:pl-4">
-                <div className="flex items-center gap-2">
-                  {b.icon}
-                  <h3 className="text-base md:text-lg font-semibold text-white">
-                    {b.title}
-                  </h3>
-                </div>
-                <p className="mt-1.5 text-sm md:text-base text-white/80">
-                  {b.desc}
-                </p>
+                  <div className="flex items-center gap-2">
+                    {b.icon}
+                    <h3 className="text-base md:text-lg font-semibold text-white">
+                      {b.title}
+                    </h3>
+                  </div>
+                  <p className="mt-1.5 text-sm md:text-base text-white/80">
+                    {b.desc}
+                  </p>
                 </div>
                 {/* corner highlight */}
                 <div className="pointer-events-none absolute right-3 bottom-3 h-6 w-10 rounded-full bg-gradient-to-tr from-white/10 to-transparent blur-sm" />
@@ -260,7 +345,9 @@ const Clients = () => {
           </div>
           {/* Soft skills pills */}
           <div className="mt-8">
-            <h3 className="text-white/90 text-sm md:text-base font-semibold">Soft skills</h3>
+            <h3 className="text-white/90 text-sm md:text-base font-semibold">
+              Soft skills
+            </h3>
             <div className="skills-row mt-3 flex flex-wrap gap-2">
               {softSkills.map((s) => (
                 <span

@@ -8,17 +8,28 @@ import gsap from "gsap";
 
 const Hero = () => {
   useEffect(() => {
-    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const prefersReduced = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
     const coarsePointer = window.matchMedia("(pointer: coarse)").matches;
     if (prefersReduced) return;
 
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ defaults: { duration: 0.7, ease: "power3.out" } });
+      const tl = gsap.timeline({
+        defaults: { duration: 0.7, ease: "power3.out" },
+      });
 
       // spotlights enter first with a soft stagger
       tl.from(
         ".hero-spot",
-        { opacity: 0, y: 30, scale: 0.98, stagger: 0.08, duration: 0.9, ease: "expo.out" },
+        {
+          opacity: 0,
+          y: 30,
+          scale: 0.98,
+          stagger: 0.08,
+          duration: 0.9,
+          ease: "expo.out",
+        },
         0
       );
 
@@ -30,7 +41,13 @@ const Hero = () => {
       )
         .from(
           ".hero-title",
-          { opacity: 0, y: 18, duration: 0.9, stagger: 0.02, ease: "power3.out" },
+          {
+            opacity: 0,
+            y: 18,
+            duration: 0.9,
+            stagger: 0.02,
+            ease: "power3.out",
+          },
           0.18
         )
         .from(
@@ -40,13 +57,25 @@ const Hero = () => {
         )
         .from(
           ".hero-cta",
-          { opacity: 0, scale: 0.96, y: 8, duration: 0.5, ease: "back.out(1.2)" },
+          {
+            opacity: 0,
+            scale: 0.96,
+            y: 8,
+            duration: 0.5,
+            ease: "back.out(1.2)",
+          },
           0.6
         );
 
       // gentle floating loop on spotlights (disabled on coarse pointers)
       if (!coarsePointer) {
-        gsap.to(".hero-spot", { y: "+=6", duration: 5, yoyo: true, repeat: -1, ease: "sine.inOut" });
+        gsap.to(".hero-spot", {
+          y: "+=6",
+          duration: 5,
+          yoyo: true,
+          repeat: -1,
+          ease: "sine.inOut",
+        });
 
         // small parallax following mouse for spotlights
         const onMove = (e: MouseEvent) => {
@@ -54,7 +83,13 @@ const Hero = () => {
           const h = window.innerHeight;
           const nx = (e.clientX / w - 0.5) * 2; // -1..1
           const ny = (e.clientY / h - 0.5) * 2;
-          gsap.to(".hero-spot", { x: nx * 12, y: `+=${ny * 6}`, duration: 0.6, overwrite: true, ease: "power2.out" });
+          gsap.to(".hero-spot", {
+            x: nx * 12,
+            y: `+=${ny * 6}`,
+            duration: 0.6,
+            overwrite: true,
+            ease: "power2.out",
+          });
         };
         window.addEventListener("mousemove", onMove);
 
@@ -89,7 +124,10 @@ const Hero = () => {
           className="hero-spot h-[80vh] w-[50vw] top-10 left-full"
           fill="purple"
         />
-        <Spotlight className="hero-spot left-80 top-28 h-[80vh] w-[50vw]" fill="blue" />
+        <Spotlight
+          className="hero-spot left-80 top-28 h-[80vh] w-[50vw]"
+          fill="blue"
+        />
       </div>
 
       {/**
@@ -126,7 +164,8 @@ const Hero = () => {
           />
 
           <p className="hero-sub text-center md:tracking-wider mb-4 text-sm md:text-base lg:text-lg">
-            I&apos;m Aditya — blending interfaces and systems to create seamless digital journeys.
+            I&apos;m Aditya — blending interfaces and systems to create seamless
+            digital journeys.
           </p>
 
           <div className="flex gap-3 hero-cta">
